@@ -2,10 +2,12 @@
 triple:          'arm64e-apple-darwin'
 binary-path:     '/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64e/MaxDestroyer.dylib'
 relocations:
-  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x58 }
-  - { offsetInCU: 0x4A, offset: 0x4A, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x55A8, symBinAddr: 0xC080, symSize: 0x0 }
-  - { offsetInCU: 0xD4, offset: 0xD4, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x58 }
-  - { offsetInCU: 0x14B, offset: 0x14B, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0x58, symBinAddr: 0x4058, symSize: 0xDC }
-  - { offsetInCU: 0x1A3, offset: 0x1A3, size: 0x8, addend: 0x0, symName: '____ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object_block_invoke', symObjAddr: 0x134, symBinAddr: 0x4134, symSize: 0x38 }
-  - { offsetInCU: 0x1CB, offset: 0x1CB, size: 0x8, addend: 0x0, symName: __ZL9showAlertv, symObjAddr: 0x16C, symBinAddr: 0x416C, symSize: 0x5E4 }
+  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x94 }
+  - { offsetInCU: 0x4A, offset: 0x4A, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x5E50, symBinAddr: 0xC098, symSize: 0x0 }
+  - { offsetInCU: 0x19A5, offset: 0x19A5, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x5E58, symBinAddr: 0xC0A0, symSize: 0x0 }
+  - { offsetInCU: 0x19E3, offset: 0x19E3, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x94 }
+  - { offsetInCU: 0x1A27, offset: 0x1A27, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0x94, symBinAddr: 0x4094, symSize: 0x94 }
+  - { offsetInCU: 0x1A6B, offset: 0x1A6B, size: 0x8, addend: 0x0, symName: '__ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector', symObjAddr: 0x128, symBinAddr: 0x4128, symSize: 0x100 }
+  - { offsetInCU: 0x1AD0, offset: 0x1AD0, size: 0x8, addend: 0x0, symName: __ZL14showErrorAlertv, symObjAddr: 0x228, symBinAddr: 0x4228, symSize: 0x48 }
+  - { offsetInCU: 0x1AFE, offset: 0x1AFE, size: 0x8, addend: 0x0, symName: ____ZL14showErrorAlertv_block_invoke, symObjAddr: 0x270, symBinAddr: 0x4270, symSize: 0x5F0 }
 ...
