@@ -2,15 +2,15 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64/MaxDestroyer.dylib'
 relocations:
-  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
-  - { offsetInCU: 0x4A, offset: 0x4A, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x6C50, symBinAddr: 0xC0D0, symSize: 0x0 }
-  - { offsetInCU: 0x19A5, offset: 0x19A5, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x6C58, symBinAddr: 0xC0D8, symSize: 0x0 }
-  - { offsetInCU: 0x19E3, offset: 0x19E3, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
-  - { offsetInCU: 0x1A27, offset: 0x1A27, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0x90 }
-  - { offsetInCU: 0x1A8C, offset: 0x1A8C, size: 0x8, addend: 0x0, symName: '__ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector', symObjAddr: 0x108, symBinAddr: 0x4108, symSize: 0x5FC }
-  - { offsetInCU: 0x1B52, offset: 0x1B52, size: 0x8, addend: 0x0, symName: __ZL14getPreferencesv, symObjAddr: 0x704, symBinAddr: 0x4704, symSize: 0x13C }
-  - { offsetInCU: 0x1B8C, offset: 0x1B8C, size: 0x8, addend: 0x0, symName: '____ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector_block_invoke', symObjAddr: 0x840, symBinAddr: 0x4840, symSize: 0x5C }
-  - { offsetInCU: 0x1BC2, offset: 0x1BC2, size: 0x8, addend: 0x0, symName: '____ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector_block_invoke_2', symObjAddr: 0x89C, symBinAddr: 0x489C, symSize: 0x514 }
-  - { offsetInCU: 0x1C59, offset: 0x1C59, size: 0x8, addend: 0x0, symName: ___copy_helper_block_ea8_32s, symObjAddr: 0xDB0, symBinAddr: 0x4DB0, symSize: 0x38 }
-  - { offsetInCU: 0x1C7D, offset: 0x1C7D, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_ea8_32s, symObjAddr: 0xDE8, symBinAddr: 0x4DE8, symSize: 0x2C }
+  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x68 }
+  - { offsetInCU: 0x4A, offset: 0x4A, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x6D60, symBinAddr: 0xC0D0, symSize: 0x0 }
+  - { offsetInCU: 0x19A5, offset: 0x19A5, size: 0x8, addend: 0x0, symName: '__ZL66_logos_orig$_ungrouped$SpringBoard$_launchApplication$withOptions$', symObjAddr: 0x6D68, symBinAddr: 0xC0D8, symSize: 0x0 }
+  - { offsetInCU: 0x19D3, offset: 0x19D3, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x68 }
+  - { offsetInCU: 0x1A09, offset: 0x1A09, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0x68, symBinAddr: 0x4068, symSize: 0x90 }
+  - { offsetInCU: 0x1A6E, offset: 0x1A6E, size: 0x8, addend: 0x0, symName: '__ZL68_logos_method$_ungrouped$SpringBoard$_launchApplication$withOptions$P11SpringBoardP13objc_selectorP11objc_objectS4_', symObjAddr: 0xF8, symBinAddr: 0x40F8, symSize: 0x688 }
+  - { offsetInCU: 0x1B51, offset: 0x1B51, size: 0x8, addend: 0x0, symName: __ZL14getPreferencesv, symObjAddr: 0x780, symBinAddr: 0x4780, symSize: 0x13C }
+  - { offsetInCU: 0x1B8B, offset: 0x1B8B, size: 0x8, addend: 0x0, symName: '____ZL68_logos_method$_ungrouped$SpringBoard$_launchApplication$withOptions$P11SpringBoardP13objc_selectorP11objc_objectS4__block_invoke', symObjAddr: 0x8BC, symBinAddr: 0x48BC, symSize: 0x4C }
+  - { offsetInCU: 0x1BC1, offset: 0x1BC1, size: 0x8, addend: 0x0, symName: '____ZL68_logos_method$_ungrouped$SpringBoard$_launchApplication$withOptions$P11SpringBoardP13objc_selectorP11objc_objectS4__block_invoke_2', symObjAddr: 0x908, symBinAddr: 0x4908, symSize: 0x514 }
+  - { offsetInCU: 0x1C58, offset: 0x1C58, size: 0x8, addend: 0x0, symName: ___copy_helper_block_ea8_32s, symObjAddr: 0xE1C, symBinAddr: 0x4E1C, symSize: 0x38 }
+  - { offsetInCU: 0x1C7C, offset: 0x1C7C, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_ea8_32s, symObjAddr: 0xE54, symBinAddr: 0x4E54, symSize: 0x2C }
 ...

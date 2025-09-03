@@ -17,6 +17,7 @@ static NSDictionary *getPreferences() {
 
 @interface SpringBoard : UIApplication
 - (void)applicationDidFinishLaunching:(id)application;
+- (void)_launchApplication:(id)application withOptions:(id)options;
 @end
 
 %hook SpringBoard
@@ -26,13 +27,10 @@ static NSDictionary *getPreferences() {
     NSLog(@"[MaxDestroyer] SpringBoard запущен, твик активирован");
 }
 
-%end
-
-%hook SBApplication
-
-- (void)launch {
-    NSString *bundleID = [self bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Попытка запуска приложения: %@", bundleID);
+// Перехватываем запуск приложения на уровне SpringBoard
+- (void)_launchApplication:(id)application withOptions:(id)options {
+    NSString *bundleID = [application bundleIdentifier];
+    NSLog(@"[MaxDestroyer] SpringBoard пытается запустить приложение: %@", bundleID);
     
     // 1. Получаем настройки
     NSDictionary *settings = getPreferences();
@@ -49,9 +47,9 @@ static NSDictionary *getPreferences() {
     NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
     
     if ([bundleID isEqualToString:targetBundleID]) {
-        NSLog(@"[MaxDestroyer] Перехвачен запуск целевого приложения: %@", bundleID);
+        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ запуск целевого приложения: %@", bundleID);
         
-        // Показываем алерт сразу
+        // Показываем алерт и НЕ запускаем приложение
         NSString *alertTitle = settings[@"alertTitle"] ?: @"Не удалось открыть приложение";
         NSString *alertMessage = settings[@"alertMessage"] ?: @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.";
         
@@ -60,13 +58,12 @@ static NSDictionary *getPreferences() {
             preferredStyle:UIAlertControllerStyleAlert];
 
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            // "Убиваем" приложение
-            exit(0);
+            // Просто закрываем алерт
         }];
 
         [alert addAction:ok];
         
-        // Показываем на главном экране
+        // Показываем алерт на главном экране
         dispatch_async(dispatch_get_main_queue(), ^{
             UIWindow *keyWindow = nil;
             if (@available(iOS 13.0, *)) {
@@ -90,10 +87,12 @@ static NSDictionary *getPreferences() {
             }
         });
         
-        return; // Не запускаем приложение
+        // ВАЖНО: НЕ ВЫЗЫВАЕМ %orig - приложение НЕ ЗАПУСКАЕТСЯ!
+        return;
     }
     
-    %orig; // Запускаем приложение как обычно
+    // Для всех остальных приложений - запускаем как обычно
+    %orig;
 }
 
 %end
