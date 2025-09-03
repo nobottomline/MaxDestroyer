@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <!-- Включение/выключение всего твика -->
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.greatlove.maximdestroyer</string>
+            <key>key</key>
+            <string>enabled</string>
+            <key>label</key>
+            <string>Включить MaxDestroyer</string>
+        </dict>
+
+        <!-- Группа с настройками для приложения -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Настройки приложения</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>com.greatlove.maximdestroyer</string>
+            <key>defaults</key>
+            <string>com.greatlove.maximdestroyer</string>
+            <key>key</key>
+            <string>targetBundleID</string>
+            <key>label</key>
+            <string>Bundle ID приложения</string>
+            <key>placeholder</key>
+            <string>com.example.app</string>
+        </dict>
+
+        <!-- Группа с настройками алерта -->
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Настройки алерта</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>Не удалось открыть приложение</string>
+            <key>defaults</key>
+            <string>com.greatlove.maximdestroyer</string>
+            <key>key</key>
+            <string>alertTitle</string>
+            <key>label</key>
+            <string>Заголовок алерта</string>
+            <key>placeholder</key>
+            <string>Введите заголовок</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.</string>
+            <key>defaults</key>
+            <string>com.greatlove.maximdestroyer</string>
+            <key>key</key>
+            <string>alertMessage</string>
+            <key>label</key>
+            <string>Сообщение об ошибке</string>
+            <key>placeholder</key>
+            <string>Введите сообщение</string>
+        </dict>
+    </array>
+
+    <key>title</key>
+    <string>MaxDestroyer</string>
+</dict>
+</plist>

@@ -1,22 +1,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-// Более надежный способ чтения настроек
-static NSDictionary *getPreferences() {
-    NSString *path = @"/var/mobile/Library/Preferences/com.greatlove.maximdestroyer.plist";
-    NSMutableDictionary *settings = [NSMutableDictionary dictionary];
-    [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:path]];
-    return settings;
-}
-
-// Функция для показа алерта
-static void showErrorAlert(NSString *bundleID) {
-    NSDictionary *settings = getPreferences();
-    NSString *alertTitle = settings[@"alertTitle"] ?: @"Не удалось открыть приложение";
-    NSString *alertMessage = settings[@"alertMessage"] ?: @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.";
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
-        message:alertMessage
+// Простая функция для показа алерта
+static void showErrorAlert() {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Не удалось открыть приложение"
+        message:@"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
         preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -46,7 +34,7 @@ static void showErrorAlert(NSString *bundleID) {
     });
 }
 
-// Объявляем классы SpringBoard
+// Объявляем классы
 @interface SBApplication : NSObject
 - (NSString *)bundleIdentifier;
 - (void)launch;
@@ -54,9 +42,6 @@ static void showErrorAlert(NSString *bundleID) {
 
 @interface SpringBoard : UIApplication
 - (void)applicationDidFinishLaunching:(id)application;
-- (void)_launchApplication:(id)application withOptions:(id)options;
-- (void)launchApplication:(id)application;
-- (void)launchApplicationWithIdentifier:(NSString *)identifier suspended:(BOOL)suspended;
 @end
 
 %hook SpringBoard
@@ -66,78 +51,40 @@ static void showErrorAlert(NSString *bundleID) {
     NSLog(@"[MaxDestroyer] SpringBoard запущен, твик активирован");
 }
 
-// Метод 1: _launchApplication:withOptions:
-- (void)_launchApplication:(id)application withOptions:(id)options {
-    NSString *bundleID = [application bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Метод 1: _launchApplication:withOptions: для %@", bundleID);
-    
-    NSDictionary *settings = getPreferences();
-    BOOL tweakEnabled = settings[@"enabled"] ? [settings[@"enabled"] boolValue] : YES;
-    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
-    
-    if (tweakEnabled && [bundleID isEqualToString:targetBundleID]) {
-        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ через метод 1: %@", bundleID);
-        showErrorAlert(bundleID);
-        return; // НЕ запускаем
-    }
-    
-    %orig;
-}
-
-// Метод 2: launchApplication:
-- (void)launchApplication:(id)application {
-    NSString *bundleID = [application bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Метод 2: launchApplication: для %@", bundleID);
-    
-    NSDictionary *settings = getPreferences();
-    BOOL tweakEnabled = settings[@"enabled"] ? [settings[@"enabled"] boolValue] : YES;
-    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
-    
-    if (tweakEnabled && [bundleID isEqualToString:targetBundleID]) {
-        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ через метод 2: %@", bundleID);
-        showErrorAlert(bundleID);
-        return; // НЕ запускаем
-    }
-    
-    %orig;
-}
-
-// Метод 3: launchApplicationWithIdentifier:suspended:
-- (void)launchApplicationWithIdentifier:(NSString *)identifier suspended:(BOOL)suspended {
-    NSLog(@"[MaxDestroyer] Метод 3: launchApplicationWithIdentifier: %@", identifier);
-    
-    NSDictionary *settings = getPreferences();
-    BOOL tweakEnabled = settings[@"enabled"] ? [settings[@"enabled"] boolValue] : YES;
-    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
-    
-    if (tweakEnabled && [identifier isEqualToString:targetBundleID]) {
-        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ через метод 3: %@", identifier);
-        showErrorAlert(identifier);
-        return; // НЕ запускаем
-    }
-    
-    %orig;
-}
-
 %end
 
 %hook SBApplication
 
 - (void)launch {
     NSString *bundleID = [self bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Метод 4: SBApplication launch для %@", bundleID);
+    NSLog(@"[MaxDestroyer] Попытка запуска приложения: %@", bundleID);
     
-    NSDictionary *settings = getPreferences();
-    BOOL tweakEnabled = settings[@"enabled"] ? [settings[@"enabled"] boolValue] : YES;
-    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
-    
-    if (tweakEnabled && [bundleID isEqualToString:targetBundleID]) {
-        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ через метод 4: %@", bundleID);
-        showErrorAlert(bundleID);
-        return; // НЕ запускаем
+    // Проверяем целевой Bundle ID
+    if ([bundleID isEqualToString:@"com.greatlove.maxdestroyer"]) {
+        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ запуск: %@", bundleID);
+        showErrorAlert();
+        return; // НЕ запускаем приложение
     }
     
-    %orig;
+    %orig; // Запускаем приложение как обычно
+}
+
+%end
+
+// Хук для самого приложения
+%hook UIApplication
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSLog(@"[MaxDestroyer] Приложение запускается: %@", bundleID);
+    
+    if ([bundleID isEqualToString:@"com.greatlove.maxdestroyer"]) {
+        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ приложение: %@", bundleID);
+        showErrorAlert();
+        return NO; // НЕ запускаем приложение
+    }
+    
+    return %orig;
 }
 
 %end
