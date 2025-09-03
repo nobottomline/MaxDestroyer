@@ -10,4 +10,11 @@ defaults write com.greatlove.maxdestroyer targetBundleID "com.greatlove.maxdestr
 chown mobile:mobile /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
 chmod 644 /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
 
+# Копируем entry.plist в правильное место для PreferenceLoader
+if [ -f "/Library/PreferenceBundles/MaxDestroyerPreferences.bundle/Resources/entry.plist" ]; then
+    cp /Library/PreferenceBundles/MaxDestroyerPreferences.bundle/Resources/entry.plist /var/mobile/Library/Preferences/
+    chown mobile:mobile /var/mobile/Library/Preferences/entry.plist
+    chmod 644 /var/mobile/Library/Preferences/entry.plist
+fi
+
 exit 0
