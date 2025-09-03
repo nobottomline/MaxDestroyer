@@ -1,6 +1,6 @@
 /Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64/MaxDestroyerPrefsRootListController.m.bdd9efba.o: \
   MaxDestroyerPrefsRootListController.m /Users/igor/theos/Prefix.pch \
-  /Users/igor/Documents/Velda/solo/MaxDestroyer/MaxDestroyerPrefsRootListController.h \
+  MaxDestroyerPrefsRootListController.h \
   /Users/igor/theos/vendor/include/Preferences/module.modulemap \
   /Users/igor/theos/vendor/include/Preferences/Preferences.h \
   /Users/igor/theos/vendor/include/Preferences/NSArray+PreferencesAddition.h \
@@ -22,7 +22,7 @@
 
 /Users/igor/theos/Prefix.pch:
 
-/Users/igor/Documents/Velda/solo/MaxDestroyer/MaxDestroyerPrefsRootListController.h:
+MaxDestroyerPrefsRootListController.h:
 
 /Users/igor/theos/vendor/include/Preferences/module.modulemap:
 

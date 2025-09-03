@@ -1,21 +1,13 @@
 #!/bin/bash
 
 # Создаем файл настроек по умолчанию
-if [ ! -f "/var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist" ]; then
-    defaults write com.greatlove.maxdestroyer enabled -bool true
-    defaults write com.greatlove.maxdestroyer alertTitle "Не удалось открыть приложение"
-    defaults write com.greatlove.maxdestroyer alertMessage "Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
-    defaults write com.greatlove.maxdestroyer targetBundleID "com.greatlove.maxdestroyer"
-fi
+defaults write com.greatlove.maxdestroyer enabled -bool true
+defaults write com.greatlove.maxdestroyer alertTitle "Не удалось открыть приложение"
+defaults write com.greatlove.maxdestroyer alertMessage "Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
+defaults write com.greatlove.maxdestroyer targetBundleID "com.greatlove.maxdestroyer"
 
-# Устанавливаем права доступа для файла настроек
+# Устанавливаем права доступа
 chown mobile:mobile /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
 chmod 644 /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
-
-# Устанавливаем права доступа для Preferences Bundle
-if [ -d "/Library/PreferenceBundles/MaxDestroyerPrefs.bundle" ]; then
-    chmod 755 /Library/PreferenceBundles/MaxDestroyerPrefs.bundle
-    chown -R root:wheel /Library/PreferenceBundles/MaxDestroyerPrefs.bundle
-fi
 
 exit 0

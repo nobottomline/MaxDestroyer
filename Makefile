@@ -13,11 +13,6 @@ MaxDestroyer_PRIVATE_FRAMEWORKS = SpringBoardServices
 include $(THEOS)/makefiles/tweak.mk
 
 # Preferences Bundle
-BUNDLE_NAME = MaxDestroyerPrefs
-MaxDestroyerPrefs_FILES = MaxDestroyerPrefsRootListController.m
-MaxDestroyerPrefs_FRAMEWORKS = UIKit
-MaxDestroyerPrefs_PRIVATE_FRAMEWORKS = Preferences
-MaxDestroyerPrefs_INSTALL_PATH = /Library/PreferenceBundles
-MaxDestroyerPrefs_CFLAGS = -fobjc-arc
+SUBPROJECTS += MaxDestroyerPrefs
 
-include $(THEOS)/makefiles/bundle.mk
+include $(THEOS)/makefiles/aggregate.mk
