@@ -4,8 +4,8 @@ Description: Перехватывает запуск приложения MAX и
 Maintainer: Great Love
 Author: Great Love
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 14.0), preferenceloader
 Icon: file:///Applications/Cydia.app/Sections/tweaks.png
 Architecture: iphoneos-arm
-Version: 1.0.0-10+debug
+Version: 1.0.0-11+debug
 Installed-Size: 180
