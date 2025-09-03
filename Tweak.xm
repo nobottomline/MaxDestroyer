@@ -9,15 +9,30 @@ static NSDictionary *getPreferences() {
     return settings;
 }
 
+// Объявляем классы SpringBoard
+@interface SBApplication : NSObject
+- (NSString *)bundleIdentifier;
+- (void)launch;
+@end
+
+@interface SpringBoard : UIApplication
+- (void)applicationDidFinishLaunching:(id)application;
+@end
+
 %hook SpringBoard
 
-// Правильный метод для перехвата запуска приложения
-- (void)_launchApplication:(id)application withOptions:(id)options {
+- (void)applicationDidFinishLaunching:(id)application {
     %orig;
-    
-    // Получаем Bundle ID запускаемого приложения
-    NSString *bundleID = [application bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Запускается приложение: %@", bundleID);
+    NSLog(@"[MaxDestroyer] SpringBoard запущен, твик активирован");
+}
+
+%end
+
+%hook SBApplication
+
+- (void)launch {
+    NSString *bundleID = [self bundleIdentifier];
+    NSLog(@"[MaxDestroyer] Попытка запуска приложения: %@", bundleID);
     
     // 1. Получаем настройки
     NSDictionary *settings = getPreferences();
@@ -25,7 +40,8 @@ static NSDictionary *getPreferences() {
     // 2. Проверяем, включен ли твик (по умолчанию - YES)
     BOOL tweakEnabled = settings[@"enabled"] ? [settings[@"enabled"] boolValue] : YES;
     if (!tweakEnabled) {
-        NSLog(@"[MaxDestroyer] Твик отключен, пропускаем");
+        NSLog(@"[MaxDestroyer] Твик отключен, пропускаем перехват");
+        %orig;
         return;
     }
     
@@ -35,27 +51,23 @@ static NSDictionary *getPreferences() {
     if ([bundleID isEqualToString:targetBundleID]) {
         NSLog(@"[MaxDestroyer] Перехвачен запуск целевого приложения: %@", bundleID);
         
-        // Даем приложению немного времени начать запуск
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            // Показываем алерт
-            NSString *alertTitle = settings[@"alertTitle"] ?: @"Не удалось открыть приложение";
-            NSString *alertMessage = settings[@"alertMessage"] ?: @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.";
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
-                message:alertMessage
-                preferredStyle:UIAlertControllerStyleAlert];
+        // Показываем алерт сразу
+        NSString *alertTitle = settings[@"alertTitle"] ?: @"Не удалось открыть приложение";
+        NSString *alertMessage = settings[@"alertMessage"] ?: @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.";
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
+            message:alertMessage
+            preferredStyle:UIAlertControllerStyleAlert];
 
-            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                // "Убиваем" приложение
-                [[UIApplication sharedApplication] performSelector:@selector(suspend)];
-                [NSThread sleepForTimeInterval:2.0];
-                exit(0);
-            }];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            // "Убиваем" приложение
+            exit(0);
+        }];
 
-            [alert addAction:ok];
-            
-            // Показываем на главном экране
+        [alert addAction:ok];
+        
+        // Показываем на главном экране
+        dispatch_async(dispatch_get_main_queue(), ^{
             UIWindow *keyWindow = nil;
             if (@available(iOS 13.0, *)) {
                 NSSet<UIScene *> *connectedScenes = [UIApplication sharedApplication].connectedScenes;
@@ -77,7 +89,11 @@ static NSDictionary *getPreferences() {
                 [keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
             }
         });
+        
+        return; // Не запускаем приложение
     }
+    
+    %orig; // Запускаем приложение как обычно
 }
 
 %end

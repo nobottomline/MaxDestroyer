@@ -18,4 +18,10 @@ cp /Library/PreferenceBundles/MaxDestroyerPreferences.bundle/entry.plist /Librar
 chown root:wheel /Library/PreferenceLoader/Preferences/MaxDestroyer.plist
 chmod 644 /Library/PreferenceLoader/Preferences/MaxDestroyer.plist
 
+# Также копируем в альтернативное место
+mkdir -p /var/mobile/Library/Preferences
+cp /Library/PreferenceBundles/MaxDestroyerPreferences.bundle/entry.plist /var/mobile/Library/Preferences/MaxDestroyer.plist
+chown mobile:mobile /var/mobile/Library/Preferences/MaxDestroyer.plist
+chmod 644 /var/mobile/Library/Preferences/MaxDestroyer.plist
+
 echo "MaxDestroyer настроен и готов к работе!"

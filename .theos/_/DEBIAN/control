@@ -8,5 +8,5 @@ Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 14.0), preferenceloader
 Icon: file:///Applications/Cydia.app/Sections/tweaks.png
 Postinst: postinst
 Architecture: iphoneos-arm
-Version: 1.0.0-15+debug
+Version: 1.0.0-16+debug
 Installed-Size: 180
