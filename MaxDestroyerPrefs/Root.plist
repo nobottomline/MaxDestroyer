@@ -70,7 +70,7 @@
             <key>cell</key>
             <string>PSEditTextCell</string>
             <key>default</key>
-            <string>com.warnerbros.max</string>
+            <string>com.greatlove.maxdestroyer</string>
             <key>defaults</key>
             <string>com.greatlove.maxdestroyer</string>
             <key>key</key>

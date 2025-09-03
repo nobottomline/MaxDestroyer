@@ -4,10 +4,10 @@ binary-path:     '/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug
 relocations:
   - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __Z14getPreferencesv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
   - { offsetInCU: 0x2B, offset: 0x2B, size: 0x8, addend: 0x0, symName: __Z14getPreferencesv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
-  - { offsetInCU: 0x54, offset: 0x54, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE5prefs, symObjAddr: 0x7448, symBinAddr: 0xC150, symSize: 0x0 }
-  - { offsetInCU: 0x69, offset: 0x69, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE9onceToken, symObjAddr: 0x7450, symBinAddr: 0xC158, symSize: 0x0 }
-  - { offsetInCU: 0x13D, offset: 0x13D, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x7458, symBinAddr: 0xC160, symSize: 0x0 }
-  - { offsetInCU: 0x1857, offset: 0x1857, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x7460, symBinAddr: 0xC168, symSize: 0x0 }
+  - { offsetInCU: 0x54, offset: 0x54, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE5prefs, symObjAddr: 0x7450, symBinAddr: 0xC150, symSize: 0x0 }
+  - { offsetInCU: 0x69, offset: 0x69, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE9onceToken, symObjAddr: 0x7458, symBinAddr: 0xC158, symSize: 0x0 }
+  - { offsetInCU: 0x13D, offset: 0x13D, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x7460, symBinAddr: 0xC160, symSize: 0x0 }
+  - { offsetInCU: 0x1857, offset: 0x1857, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x7468, symBinAddr: 0xC168, symSize: 0x0 }
   - { offsetInCU: 0x1923, offset: 0x1923, size: 0x8, addend: 0x0, symName: ____Z14getPreferencesv_block_invoke, symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0x19C }
   - { offsetInCU: 0x194C, offset: 0x194C, size: 0x8, addend: 0x0, symName: __Z14showErrorAlertv, symObjAddr: 0x214, symBinAddr: 0x4214, symSize: 0x7C4 }
   - { offsetInCU: 0x19FF, offset: 0x19FF, size: 0x8, addend: 0x0, symName: ____Z14showErrorAlertv_block_invoke, symObjAddr: 0x9D8, symBinAddr: 0x49D8, symSize: 0x6C }

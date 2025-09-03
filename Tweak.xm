@@ -10,7 +10,7 @@
 #define TARGET_BUNDLE_ID_KEY @"targetBundleID"
 
 // Значения по умолчанию
-#define DEFAULT_TARGET_BUNDLE_ID @"com.warnerbros.max"
+#define DEFAULT_TARGET_BUNDLE_ID @"com.greatlove.maxdestroyer"
 #define DEFAULT_ALERT_TITLE @"Не удалось открыть приложение"
 #define DEFAULT_ALERT_MESSAGE @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
 
