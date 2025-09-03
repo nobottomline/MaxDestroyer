@@ -11,4 +11,8 @@ MaxDestroyerPreferences_FRAMEWORKS = UIKit
 MaxDestroyerPreferences_INSTALL_PATH = /Library/PreferenceBundles
 MaxDestroyerPreferences_CFLAGS = -fobjc-arc
 
+# Копируем entry.plist в корень bundle'а
+MaxDestroyerPreferences_EXTRA_FRAMEWORKS = 
+MaxDestroyerPreferences_COPY_FILES = entry.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

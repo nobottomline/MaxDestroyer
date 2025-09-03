@@ -29,8 +29,8 @@ static NSDictionary *getPreferences() {
         return;
     }
     
-    // 3. Получаем целевой Bundle ID из настроек
-    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.hbo.max";
+    // 3. Получаем целевой Bundle ID из настроек (по умолчанию com.greatlove.maxdestroyer)
+    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
     
     if ([bundleID isEqualToString:targetBundleID]) {
         NSLog(@"[MaxDestroyer] Перехвачен запуск целевого приложения: %@", bundleID);

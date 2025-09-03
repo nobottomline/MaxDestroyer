@@ -8,3 +8,4 @@ Author: Great Love
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 14.0), preferenceloader
 Icon: file:///Applications/Cydia.app/Sections/tweaks.png
+Postinst: postinst
