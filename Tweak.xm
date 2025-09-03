@@ -3,7 +3,7 @@
 
 // Более надежный способ чтения настроек
 static NSDictionary *getPreferences() {
-    NSString *path = @"/var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist";
+    NSString *path = @"/var/mobile/Library/Preferences/com.greatlove.maximdestroyer.plist";
     NSMutableDictionary *settings = [NSMutableDictionary dictionary];
     [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:path]];
     return settings;

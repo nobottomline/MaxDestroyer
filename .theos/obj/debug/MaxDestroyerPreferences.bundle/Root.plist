@@ -11,7 +11,7 @@
             <key>default</key>
             <true/>
             <key>defaults</key>
-            <string>com.greatlove.maxdestroyer</string>
+            <string>com.greatlove.maximdestroyer</string>
             <key>key</key>
             <string>enabled</string>
             <key>label</key>
@@ -29,9 +29,9 @@
             <key>cell</key>
             <string>PSEditTextCell</string>
             <key>default</key>
-            <string>com.greatlove.maxdestroyer</string>
+            <string>com.greatlove.maximdestroyer</string>
             <key>defaults</key>
-            <string>com.greatlove.maxdestroyer</string>
+            <string>com.greatlove.maximdestroyer</string>
             <key>key</key>
             <string>targetBundleID</string>
             <key>label</key>
@@ -53,7 +53,7 @@
             <key>default</key>
             <string>Не удалось открыть приложение</string>
             <key>defaults</key>
-            <string>com.greatlove.maxdestroyer</string>
+            <string>com.greatlove.maximdestroyer</string>
             <key>key</key>
             <string>alertTitle</string>
             <key>label</key>
@@ -67,7 +67,7 @@
             <key>default</key>
             <string>Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.</string>
             <key>defaults</key>
-            <string>com.greatlove.maxdestroyer</string>
+            <string>com.greatlove.maximdestroyer</string>
             <key>key</key>
             <string>alertMessage</string>
             <key>label</key>

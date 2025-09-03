@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Устанавливаем настройки по умолчанию
-defaults write com.greatlove.maxdestroyer enabled -bool true
-defaults write com.greatlove.maxdestroyer targetBundleID -string "com.greatlove.maxdestroyer"
-defaults write com.greatlove.maxdestroyer alertTitle -string "Не удалось открыть приложение"
-defaults write com.greatlove.maxdestroyer alertMessage -string "Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
+defaults write com.greatlove.maximdestroyer enabled -bool true
+defaults write com.greatlove.maximdestroyer targetBundleID -string "com.greatlove.maxdestroyer"
+defaults write com.greatlove.maximdestroyer alertTitle -string "Не удалось открыть приложение"
+defaults write com.greatlove.maximdestroyer alertMessage -string "Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
 
 # Устанавливаем правильные права доступа
-chown mobile:mobile /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
-chmod 644 /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
+chown mobile:mobile /var/mobile/Library/Preferences/com.greatlove.maximdestroyer.plist
+chmod 644 /var/mobile/Library/Preferences/com.greatlove.maximdestroyer.plist
 
 # Копируем entry.plist в правильное место для PreferenceLoader
 mkdir -p /Library/PreferenceLoader/Preferences
