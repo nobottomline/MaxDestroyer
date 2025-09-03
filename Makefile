@@ -8,11 +8,16 @@ TWEAK_NAME = MaxDestroyer
 MaxDestroyer_FILES = Tweak.xm
 MaxDestroyer_CFLAGS = -fobjc-arc
 MaxDestroyer_FRAMEWORKS = UIKit Foundation
-MaxDestroyer_PRIVATE_FRAMEWORKS = SpringBoardServices
-
-include $(THEOS)/makefiles/tweak.mk
+MaxDestroyer_PRIVATE_FRAMEWORKS = SpringBoardServices Preferences
+MaxDestroyer_INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries
 
 # Preferences Bundle
-SUBPROJECTS += MaxDestroyerPrefs
+BUNDLE_NAME = MaxDestroyerPrefs
+MaxDestroyerPrefs_FILES = MaxDestroyerPrefs.bundle/MaxDestroyerPrefsRootListController.m
+MaxDestroyerPrefs_FRAMEWORKS = UIKit
+MaxDestroyerPrefs_PRIVATE_FRAMEWORKS = Preferences
+MaxDestroyerPrefs_INSTALL_PATH = /Library/PreferenceBundles
+MaxDestroyerPrefs_CFLAGS = -fobjc-arc
 
-include $(THEOS)/makefiles/aggregate.mk
+include $(THEOS)/makefiles/tweak.mk
+include $(THEOS)/makefiles/bundle.mk

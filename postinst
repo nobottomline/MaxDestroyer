@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Установка файлов настроек
+if [ -d "/Library/PreferenceBundles/MaxDestroyerPrefs.bundle" ]; then
+    # Копируем Info.plist
+    cp /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/Info.plist /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/
+    
+    # Копируем Root.plist
+    cp /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/Root.plist /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/
+    
+    # Устанавливаем правильные права доступа
+    chmod 755 /Library/PreferenceBundles/MaxDestroyerPrefs.bundle
+    chmod 644 /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/Info.plist
+    chmod 644 /Library/PreferenceBundles/MaxDestroyerPrefs.bundle/Root.plist
+fi
+
+# Создаем файл настроек по умолчанию
+if [ ! -f "/var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist" ]; then
+    defaults write com.greatlove.maxdestroyer enabled -bool true
+    defaults write com.greatlove.maxdestroyer alertTitle "Не удалось открыть приложение"
+    defaults write com.greatlove.maxdestroyer alertMessage "Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
+    defaults write com.greatlove.maxdestroyer targetBundleID "com.warnerbros.max"
+fi
+
+# Устанавливаем права доступа для файла настроек
+chown mobile:mobile /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
+chmod 644 /var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist
+
+exit 0
