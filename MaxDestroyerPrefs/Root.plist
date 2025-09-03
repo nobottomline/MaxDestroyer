@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>MaxDestroyer</string>
+            <key>footerText</key>
+            <string>Твик для перехвата запуска приложения MAX и показа алерта об ошибке. Создает реалистичную иллюзию поврежденного приложения.</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <true/>
+            <key>defaults</key>
+            <string>com.greatlove.maxdestroyer</string>
+            <key>key</key>
+            <string>enabled</string>
+            <key>label</key>
+            <string>Включить MaxDestroyer</string>
+            <key>PostNotification</key>
+            <string>com.greatlove.maxdestroyer/preferencesChanged</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Настройки алерта</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>Не удалось открыть приложение</string>
+            <key>defaults</key>
+            <string>com.greatlove.maxdestroyer</string>
+            <key>key</key>
+            <string>alertTitle</string>
+            <key>label</key>
+            <string>Заголовок алерта</string>
+            <key>placeholder</key>
+            <string>Введите заголовок</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.</string>
+            <key>defaults</key>
+            <string>com.greatlove.maxdestroyer</string>
+            <key>key</key>
+            <string>alertMessage</string>
+            <key>label</key>
+            <string>Сообщение об ошибке</string>
+            <key>placeholder</key>
+            <string>Введите сообщение</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Целевое приложение</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSEditTextCell</string>
+            <key>default</key>
+            <string>com.warnerbros.max</string>
+            <key>defaults</key>
+            <string>com.greatlove.maxdestroyer</string>
+            <key>key</key>
+            <string>targetBundleID</string>
+            <key>label</key>
+            <string>Bundle ID приложения</string>
+            <key>placeholder</key>
+            <string>com.example.app</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Информация</key>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSButtonCell</string>
+            <key>action</key>
+            <string>openGitHub</string>
+            <key>label</key>
+            <string>GitHub</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSButtonCell</string>
+            <key>action</key>
+            <string>openTwitter</string>
+            <key>label</key>
+            <string>Twitter</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>footerText</key>
+            <string>Разработано Great Love\nВерсия 1.0.0\n\nMaxDestroyer перехватывает попытки запуска указанного приложения и показывает реалистичный алерт об ошибке, создавая иллюзию поврежденного приложения.</string>
+        </dict>
+    </array>
+    <key>title</key>
+    <string>MaxDestroyer</string>
+</dict>
+</plist>

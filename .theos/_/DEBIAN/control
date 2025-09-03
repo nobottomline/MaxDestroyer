@@ -1,0 +1,11 @@
+Package: com.greatlove.maxdestroyer
+Name: MaxDestroyer
+Description: Перехватывает запуск приложения MAX и показывает алерт об ошибке. Создает иллюзию поврежденного приложения.
+Maintainer: Great Love
+Author: Great Love
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Icon: file:///Applications/Cydia.app/Sections/tweaks.png
+Architecture: iphoneos-arm
+Version: 1.0.0-3+debug
+Installed-Size: 340

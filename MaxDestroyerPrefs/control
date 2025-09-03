@@ -1,0 +1,9 @@
+Package: com.greatlove.maxdestroyerprefs
+Name: MaxDestroyer Preferences
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Настройки для MaxDestroyer
+Maintainer: Great Love
+Author: Great Love
+Section: Tweaks
+Depends: preferenceloader
