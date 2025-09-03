@@ -8,7 +8,6 @@ BUNDLE_NAME = MaxDestroyerPreferences
 
 MaxDestroyerPreferences_FILES = 
 MaxDestroyerPreferences_FRAMEWORKS = UIKit
-MaxDestroyerPreferences_PRIVATE_FRAMEWORKS = Preferences
 MaxDestroyerPreferences_INSTALL_PATH = /Library/PreferenceBundles
 MaxDestroyerPreferences_CFLAGS = -fobjc-arc
 
