@@ -1,5 +1,6 @@
 ARCHS = arm64 arm64e
-TARGET = iphone:clang:14.5:13.0
+TARGET = iphone:clang:latest:14.0
+INSTALL_TARGET_PROCESSES = SpringBoard
 
 include $(THEOS)/makefiles/common.mk
 
@@ -7,12 +8,10 @@ TWEAK_NAME = MaxDestroyer
 
 MaxDestroyer_FILES = Tweak.xm
 MaxDestroyer_CFLAGS = -fobjc-arc
-MaxDestroyer_FRAMEWORKS = UIKit Foundation
-MaxDestroyer_PRIVATE_FRAMEWORKS = SpringBoardServices
+MaxDestroyer_FRAMEWORKS = UIKit
 
-include $(THEOS)/makefiles/tweak.mk
+# Важно: добавляем бандл настроек как дополнительный модуль
+SUBPROJECTS += Preferences
 
-# Preferences Bundle
-SUBPROJECTS += MaxDestroyerPrefs
-
-include $(THEOS)/makefiles/aggregate.mk
+include $(THEOS_MAKE_PATH)/tweak.mk
+include $(THEOS_MAKE_PATH)/aggregate.mk

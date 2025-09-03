@@ -1,6 +1,6 @@
-/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64e/MaxDestroyerPrefsRootListController.m.2027f5bb.o: \
-  MaxDestroyerPrefsRootListController.m /Users/igor/theos/Prefix.pch \
-  MaxDestroyerPrefsRootListController.h \
+/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64e/Tweak.xm.7bb713b5.o: \
+  /Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64e/Tweak.xm.mm \
+  /Users/igor/theos/Prefix.pch \
   /Users/igor/theos/vendor/include/Preferences/module.modulemap \
   /Users/igor/theos/vendor/include/Preferences/Preferences.h \
   /Users/igor/theos/vendor/include/Preferences/NSArray+PreferencesAddition.h \
@@ -18,11 +18,12 @@
   /Users/igor/theos/vendor/include/Preferences/PSSliderTableCell.h \
   /Users/igor/theos/vendor/include/Preferences/PSSwitchTableCell.h \
   /Users/igor/theos/vendor/include/Preferences/PSSystemPolicyForApp.h \
-  /Users/igor/theos/vendor/include/Preferences/PreferencesAppController.h
+  /Users/igor/theos/vendor/include/Preferences/PreferencesAppController.h \
+  /Users/igor/theos/vendor/include/substrate.h \
+  /Users/igor/theos/vendor/lib/CydiaSubstrate.framework/Modules/module.modulemap \
+  /Users/igor/theos/vendor/lib/CydiaSubstrate.framework/Headers/CydiaSubstrate.h
 
 /Users/igor/theos/Prefix.pch:
-
-MaxDestroyerPrefsRootListController.h:
 
 /Users/igor/theos/vendor/include/Preferences/module.modulemap:
 
@@ -59,3 +60,9 @@ MaxDestroyerPrefsRootListController.h:
 /Users/igor/theos/vendor/include/Preferences/PSSystemPolicyForApp.h:
 
 /Users/igor/theos/vendor/include/Preferences/PreferencesAppController.h:
+
+/Users/igor/theos/vendor/include/substrate.h:
+
+/Users/igor/theos/vendor/lib/CydiaSubstrate.framework/Modules/module.modulemap:
+
+/Users/igor/theos/vendor/lib/CydiaSubstrate.framework/Headers/CydiaSubstrate.h:

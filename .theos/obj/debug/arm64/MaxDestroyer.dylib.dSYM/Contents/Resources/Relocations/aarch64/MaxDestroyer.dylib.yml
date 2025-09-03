@@ -2,17 +2,14 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/igor/Documents/Velda/solo/MaxDestroyer/.theos/obj/debug/arm64/MaxDestroyer.dylib'
 relocations:
-  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __Z14getPreferencesv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
-  - { offsetInCU: 0x2B, offset: 0x2B, size: 0x8, addend: 0x0, symName: __Z14getPreferencesv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
-  - { offsetInCU: 0x54, offset: 0x54, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE5prefs, symObjAddr: 0x7450, symBinAddr: 0xC150, symSize: 0x0 }
-  - { offsetInCU: 0x69, offset: 0x69, size: 0x8, addend: 0x0, symName: __ZZ14getPreferencesvE9onceToken, symObjAddr: 0x7458, symBinAddr: 0xC158, symSize: 0x0 }
-  - { offsetInCU: 0x13D, offset: 0x13D, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x7460, symBinAddr: 0xC160, symSize: 0x0 }
-  - { offsetInCU: 0x1857, offset: 0x1857, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x7468, symBinAddr: 0xC168, symSize: 0x0 }
-  - { offsetInCU: 0x1923, offset: 0x1923, size: 0x8, addend: 0x0, symName: ____Z14getPreferencesv_block_invoke, symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0x19C }
-  - { offsetInCU: 0x194C, offset: 0x194C, size: 0x8, addend: 0x0, symName: __Z14showErrorAlertv, symObjAddr: 0x214, symBinAddr: 0x4214, symSize: 0x7C4 }
-  - { offsetInCU: 0x19FF, offset: 0x19FF, size: 0x8, addend: 0x0, symName: ____Z14showErrorAlertv_block_invoke, symObjAddr: 0x9D8, symBinAddr: 0x49D8, symSize: 0x6C }
-  - { offsetInCU: 0x1A35, offset: 0x1A35, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0xA44, symBinAddr: 0x4A44, symSize: 0x78 }
-  - { offsetInCU: 0x1A79, offset: 0x1A79, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0xABC, symBinAddr: 0x4ABC, symSize: 0x90 }
-  - { offsetInCU: 0x1ADE, offset: 0x1ADE, size: 0x8, addend: 0x0, symName: '__ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector', symObjAddr: 0xB4C, symBinAddr: 0x4B4C, symSize: 0x2AC }
-  - { offsetInCU: 0x1B60, offset: 0x1B60, size: 0x8, addend: 0x0, symName: '____ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector_block_invoke', symObjAddr: 0xDF8, symBinAddr: 0x4DF8, symSize: 0x28 }
+  - { offsetInCU: 0x1E, offset: 0x1E, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
+  - { offsetInCU: 0x4A, offset: 0x4A, size: 0x8, addend: 0x0, symName: '__ZL65_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$', symObjAddr: 0x6980, symBinAddr: 0xC0B8, symSize: 0x0 }
+  - { offsetInCU: 0x19A5, offset: 0x19A5, size: 0x8, addend: 0x0, symName: '__ZL43_logos_orig$_ungrouped$SBApplication$launch', symObjAddr: 0x6988, symBinAddr: 0xC0C0, symSize: 0x0 }
+  - { offsetInCU: 0x19E3, offset: 0x19E3, size: 0x8, addend: 0x0, symName: __ZL15_logosLocalInitv, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x78 }
+  - { offsetInCU: 0x1A27, offset: 0x1A27, size: 0x8, addend: 0x0, symName: '__ZL67_logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$P11SpringBoardP13objc_selectorP11objc_object', symObjAddr: 0x78, symBinAddr: 0x4078, symSize: 0x90 }
+  - { offsetInCU: 0x1A8C, offset: 0x1A8C, size: 0x8, addend: 0x0, symName: '__ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector', symObjAddr: 0x108, symBinAddr: 0x4108, symSize: 0x5D8 }
+  - { offsetInCU: 0x1B52, offset: 0x1B52, size: 0x8, addend: 0x0, symName: '____ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector_block_invoke', symObjAddr: 0x6E0, symBinAddr: 0x46E0, symSize: 0x5C }
+  - { offsetInCU: 0x1B88, offset: 0x1B88, size: 0x8, addend: 0x0, symName: '____ZL45_logos_method$_ungrouped$SBApplication$launchP13SBApplicationP13objc_selector_block_invoke_2', symObjAddr: 0x73C, symBinAddr: 0x473C, symSize: 0x514 }
+  - { offsetInCU: 0x1C1F, offset: 0x1C1F, size: 0x8, addend: 0x0, symName: ___copy_helper_block_ea8_32s, symObjAddr: 0xC50, symBinAddr: 0x4C50, symSize: 0x38 }
+  - { offsetInCU: 0x1C43, offset: 0x1C43, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_ea8_32s, symObjAddr: 0xC88, symBinAddr: 0x4C88, symSize: 0x2C }
 ...

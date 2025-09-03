@@ -1,18 +1,11 @@
 #import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import <SpringBoardServices/SpringBoardServices.h>
+#import <Preferences/Preferences.h>
 
-// Ключи для настроек
-#define PREFERENCES_PATH @"/var/mobile/Library/Preferences/com.greatlove.maxdestroyer.plist"
-#define ENABLED_KEY @"enabled"
-#define ALERT_TITLE_KEY @"alertTitle"
-#define ALERT_MESSAGE_KEY @"alertMessage"
-#define TARGET_BUNDLE_ID_KEY @"targetBundleID"
-
-// Значения по умолчанию
-#define DEFAULT_TARGET_BUNDLE_ID @"com.greatlove.maxdestroyer"
-#define DEFAULT_ALERT_TITLE @"Не удалось открыть приложение"
-#define DEFAULT_ALERT_MESSAGE @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
+// Объявляем класс для работы с настройками
+@interface PSPreferences : NSObject
++ (id)sharedInstance;
+- (id)valuesForPreferencesWithIdentifier:(NSString *)identifier;
+@end
 
 @interface SBApplication : NSObject
 - (NSString *)bundleIdentifier;
@@ -28,72 +21,7 @@
 - (void)applicationDidFinishLaunching:(id)application;
 @end
 
-// Функция для получения настроек
-NSDictionary* getPreferences() {
-    static NSDictionary *prefs = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        prefs = [NSDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
-        if (!prefs) {
-            prefs = @{
-                ENABLED_KEY: @YES,
-                ALERT_TITLE_KEY: DEFAULT_ALERT_TITLE,
-                ALERT_MESSAGE_KEY: DEFAULT_ALERT_MESSAGE,
-                TARGET_BUNDLE_ID_KEY: DEFAULT_TARGET_BUNDLE_ID
-            };
-        }
-    });
-    return prefs;
-}
 
-// Функция для показа алерта
-void showErrorAlert() {
-    NSDictionary *prefs = getPreferences();
-    
-    NSString *alertTitle = prefs[ALERT_TITLE_KEY] ?: DEFAULT_ALERT_TITLE;
-    NSString *alertMessage = prefs[ALERT_MESSAGE_KEY] ?: DEFAULT_ALERT_MESSAGE;
-    
-    UIAlertController *alert = [UIAlertController 
-        alertControllerWithTitle:alertTitle
-        message:alertMessage
-        preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction 
-        actionWithTitle:@"OK" 
-        style:UIAlertActionStyleDefault 
-        handler:^(UIAlertAction *action) {
-            NSLog(@"[MaxDestroyer] Пользователь нажал OK, приложение будет завершено");
-            // Принудительно завершаем приложение
-            exit(0);
-        }];
-    
-    [alert addAction:okAction];
-    
-    // Получаем корневой контроллер для показа алерта
-    UIWindow *keyWindow = nil;
-    if (@available(iOS 13.0, *)) {
-        NSSet<UIScene *> *connectedScenes = [UIApplication sharedApplication].connectedScenes;
-        for (UIScene *scene in connectedScenes) {
-            if (scene.activationState == UISceneActivationStateForegroundActive) {
-                UIWindowScene *windowScene = (UIWindowScene *)scene;
-                keyWindow = windowScene.windows.firstObject;
-                break;
-            }
-        }
-    } else {
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        keyWindow = [UIApplication sharedApplication].keyWindow;
-        #pragma clang diagnostic pop
-    }
-    
-    if (keyWindow && keyWindow.rootViewController) {
-        [keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
-        NSLog(@"[MaxDestroyer] Алерт показан пользователю");
-    } else {
-        NSLog(@"[MaxDestroyer] Ошибка: не удалось найти корневой контроллер для показа алерта");
-    }
-}
 
 %hook SpringBoard
 
@@ -112,27 +40,58 @@ void showErrorAlert() {
     
     NSLog(@"[MaxDestroyer] Попытка запуска приложения: %@", bundleID);
     
-    // Получаем настройки
-    NSDictionary *prefs = getPreferences();
+    // 1. Получаем настройки
+    NSDictionary *settings = [[objc_getClass("PSPreferences") sharedInstance] valuesForPreferencesWithIdentifier:@"com.greatlove.maxdestroyer"];
     
-    // Проверяем, включен ли твик
-    BOOL isEnabled = [prefs[ENABLED_KEY] boolValue];
-    if (!isEnabled) {
+    // 2. Проверяем, включен ли твик
+    BOOL tweakEnabled = [settings[@"enabled"] ?: @YES boolValue];
+    if (!tweakEnabled) {
         NSLog(@"[MaxDestroyer] Твик отключен, пропускаем перехват");
         %orig;
         return;
     }
     
-    // Получаем целевой Bundle ID из настроек
-    NSString *targetBundleID = prefs[TARGET_BUNDLE_ID_KEY] ?: DEFAULT_TARGET_BUNDLE_ID;
+    // 3. Получаем Bundle ID из настроек или используем значение по умолчанию
+    NSString *targetBundleID = settings[@"targetBundleID"] ?: @"com.greatlove.maxdestroyer";
     
-    // Проверяем, является ли это целевым приложением
     if ([bundleID isEqualToString:targetBundleID]) {
         NSLog(@"[MaxDestroyer] Перехвачен запуск целевого приложения: %@", bundleID);
         
-        // Показываем алерт на главном потоке
+        // Показываем алерт
+        NSString *alertTitle = settings[@"alertTitle"] ?: @"Не удалось открыть приложение";
+        NSString *alertMessage = settings[@"alertMessage"] ?: @"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки.";
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
+            message:alertMessage
+            preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            exit(0);
+        }];
+
+        [alert addAction:ok];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            showErrorAlert();
+            UIWindow *keyWindow = nil;
+            if (@available(iOS 13.0, *)) {
+                NSSet<UIScene *> *connectedScenes = [UIApplication sharedApplication].connectedScenes;
+                for (UIScene *scene in connectedScenes) {
+                    if (scene.activationState == UISceneActivationStateForegroundActive) {
+                        UIWindowScene *windowScene = (UIWindowScene *)scene;
+                        keyWindow = windowScene.windows.firstObject;
+                        break;
+                    }
+                }
+            } else {
+                #pragma clang diagnostic push
+                #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                keyWindow = [UIApplication sharedApplication].keyWindow;
+                #pragma clang diagnostic pop
+            }
+            
+            if (keyWindow && keyWindow.rootViewController) {
+                [keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+            }
         });
         
         // НЕ вызываем оригинальный метод launch

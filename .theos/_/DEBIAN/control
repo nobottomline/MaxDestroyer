@@ -7,5 +7,5 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Icon: file:///Applications/Cydia.app/Sections/tweaks.png
 Architecture: iphoneos-arm
-Version: 1.0.0-8+debug
-Installed-Size: 340
+Version: 1.0.0-9+debug
+Installed-Size: 180
