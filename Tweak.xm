@@ -1,16 +1,17 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-// Простая функция для показа алерта
+// Функция для показа алерта
 static void showErrorAlert() {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Не удалось открыть приложение"
-        message:@"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
-        preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:ok];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Не удалось открыть приложение"
+            message:@"Произошла критическая ошибка при инициализации приложения. Код ошибки: 0x80004005. Попробуйте переустановить приложение или обратитесь в службу поддержки."
+            preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:ok];
+        
+        // Получаем главное окно
         UIWindow *keyWindow = nil;
         if (@available(iOS 13.0, *)) {
             NSSet<UIScene *> *connectedScenes = [UIApplication sharedApplication].connectedScenes;
@@ -49,6 +50,12 @@ static void showErrorAlert() {
 - (void)applicationDidFinishLaunching:(id)application {
     %orig;
     NSLog(@"[MaxDestroyer] SpringBoard запущен, твик активирован");
+    
+    // Показываем тестовый алерт через 3 секунды после запуска SpringBoard
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"[MaxDestroyer] Показываем тестовый алерт");
+        showErrorAlert();
+    });
 }
 
 %end
@@ -67,24 +74,6 @@ static void showErrorAlert() {
     }
     
     %orig; // Запускаем приложение как обычно
-}
-
-%end
-
-// Хук для самого приложения
-%hook UIApplication
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
-    NSLog(@"[MaxDestroyer] Приложение запускается: %@", bundleID);
-    
-    if ([bundleID isEqualToString:@"com.greatlove.maxdestroyer"]) {
-        NSLog(@"[MaxDestroyer] БЛОКИРУЕМ приложение: %@", bundleID);
-        showErrorAlert();
-        return NO; // НЕ запускаем приложение
-    }
-    
-    return %orig;
 }
 
 %end
